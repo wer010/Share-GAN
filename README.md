@@ -26,12 +26,12 @@ cd Share-GAN
 - Train a model:
 ```bash
 #!./scripts/train_cyclegan.sh
-python train.py --dataroot ./***/*** --name maps_share-gan --model brach_gan
+python train.py --dataroot ./***/*** --name maps_share-gan --model branch_gan
 ```
-To see more intermediate results, check out `./checkpoints/maps_cyclegan/web/index.html`.
+To see more intermediate results, check out `./checkpoints/maps_share-gan/web/index.html`.
 - Test the model:
 ```bash
 #!./scripts/test_cyclegan.sh
-python test.py --dataroot ./***/*** --name maps_sahre-gan --model brach_gan
+python test.py --dataroot ./***/*** --name maps_sahre-gan --model branch_gan
 ```
 - The test results will be saved to a html file here: `./results/maps_share-gan/latest_test/index.html`.
