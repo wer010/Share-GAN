@@ -21,17 +21,18 @@ cd Share-GAN
   
   
 ### share-GAN train/test
-- Download a share-GAN dataset (e.g. maps)
+- Download a share-GAN dataset (e.g. maps)  Copy the dataset into the project path (*** / ***)
 - To view training results and loss plots, run `python -m visdom.server` and click the URL http://localhost:8097.
 - Train a model:
 ```bash
 #!./scripts/train_cyclegan.sh
-python train.py --dataroot ./***/*** --name maps_share-gan --model branch_gan
+python train.py --dataroot ./***/*** --dataset_mode  road --model branch --preprocess resize --load_size 256 --batch_size 4 --gpu_ids 1,2 --netD full
 ```
 To see more intermediate results, check out `./checkpoints/maps_share-gan/web/index.html`.
 - Test the model:
 ```bash
 #!./scripts/test_cyclegan.sh
-python test.py --dataroot ./***/*** --name maps_sahre-gan --model branch_gan
+python test.py --dataroot ./***/***--dataset_mode  road --model branch --preprocess resize --load_size 256 --batch_size 4
+--gpu_ids 1,2
 ```
 - The test results will be saved to a html file here: `./results/maps_share-gan/latest_test/index.html`.
