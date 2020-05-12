@@ -20,7 +20,8 @@ class RoadDataset(BaseDataset):
         BaseDataset.__init__(self,opt)
 
         if 'txt' not in opt.phase:
-            opt.phase = opt.phase + '.txt'
+            opt.phase = opt.phase + '3.txt'
+        self.dataroot = opt.dataroot
         self.dir_AB = os.path.join(opt.dataroot, opt.phase)  # get the image directory
         self.AB_paths = open(self.dir_AB).read().split('\n') # get image paths
         assert (self.opt.load_size >= self.opt.crop_size)
@@ -46,8 +47,10 @@ class RoadDataset(BaseDataset):
 
         A_path = AB_path[0]
         B_path = AB_path[1]
-        A = Image.open('./data_road/'+A_path).convert('RGB')
-        B = Image.open('./data_road/'+B_path).convert('RGB')
+        path = os.path.join(self.dataroot,A_path)
+        A = Image.open(path).convert('RGB')
+        path = os.path.join(self.dataroot, B_path)
+        B = Image.open(path).convert('RGB')
 
 
         transform_params = get_params(self.opt, A.size)
